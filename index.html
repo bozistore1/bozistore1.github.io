@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="BOZISTORE HOST — офлайн-хосты для PlayStation 4. Выберите прошивку вашей PS4.">
+<title>BOZISTORE HOST</title>
+<link rel="icon" type="image/png" href="bozistore.png">
+<style>
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+
+body {
+    background: #e7e1d0;
+    color: #1c1a15;
+    font: 17px/1.5 Georgia, "Times New Roman", serif;
+    padding: 26px 12px 48px;
+}
+
+.sheet {
+    background: #f9f6ec;
+    -webkit-box-shadow: 0 3px 30px rgba(28, 26, 21, .3);
+    box-shadow: 0 3px 30px rgba(28, 26, 21, .3);
+    margin: 0 auto;
+    max-width: 1240px;
+    padding: 0 34px 28px;
+}
+.strip {
+    background: #1c56b4;
+    border-bottom: 2px solid #d9c891;
+    height: 7px;
+    margin: 0 -34px;
+}
+
+.masthead { padding: 26px 0 0; text-align: center; }
+.mast-logo {
+    background: transparent;
+    border: 0;
+    display: inline-block;
+    padding: 0;
+}
+.mast-logo img {
+    background: transparent;
+    border: 0;
+    display: block;
+    height: auto;
+    max-height: 150px;
+    max-width: 340px;
+    width: auto;
+}
+.mast-name {
+    font-size: 56px;
+    font-weight: bold;
+    letter-spacing: .05em;
+    line-height: 1;
+    margin: 16px 0 8px;
+}
+.mast-name span { color: #1c56b4; }
+.mast-motto {
+    color: #7a7259;
+    font-size: 17px;
+    font-style: italic;
+    margin: 0 0 18px;
+}
+.rule-thickthin { border-top: 3px solid #1c1a15; border-bottom: 1px solid #1c1a15; height: 4px; }
+.rule-thinthick { border-top: 1px solid #1c1a15; border-bottom: 3px solid #1c1a15; height: 4px; margin-top: 32px; }
+
+.headzone { padding: 0px 8px 0px; text-align: center; }
+.headline {
+    font-size: 36px;
+    font-weight: bold;
+    line-height: 1.12;
+    margin: 0;
+}
+.headline em { color: #1c56b4; font-style: normal; }
+.lede {
+    color: #4c463a;
+    font-size: 18px;
+    font-style: italic;
+    line-height: 1.55;
+    margin: 14px auto 0;
+    max-width: 620px;
+}
+.headnote {
+    color: #8a8268;
+    font: 11px/1.5 Arial, Helvetica, sans-serif;
+    letter-spacing: .22em;
+    margin: 16px 0 0;
+    text-transform: uppercase;
+}
+
+.sec { border-top: 1px solid #1c1a15; margin-top: 26px; }
+.sec-head {
+    background: #f1ecdb;
+    border-bottom: 1px solid #cfc7ae;
+    color: #1c56b4;
+    font: bold 12px/1.5 Arial, Helvetica, sans-serif;
+    letter-spacing: .26em;
+    padding: 10px 100px;
+    position: relative;
+    text-align: center;
+    text-transform: uppercase;
+}
+.sec-hint {
+    color: #a49a7e;
+    font-size: 10px;
+    letter-spacing: .14em;
+    position: absolute;
+    right: 10px;
+    top: 11px;
+}
+
+.hostcols {
+    border-spacing: 0;
+    display: table;
+    margin-top: 18px;
+    table-layout: fixed;
+    width: 100%;
+}
+.hcol { display: table-cell; vertical-align: top; width: 50%; }
+.hcol-l { padding-right: 24px; }
+.hcol-r { border-left: 1px solid #d8d1bb; padding-left: 24px; }
+
+.hrow {
+    border-spacing: 0;
+    border-top: 1px solid #d8d1bb;
+    color: #1c1a15;
+    display: table;
+    table-layout: fixed;
+    text-decoration: none;
+    -webkit-transition: background-color .12s linear, color .12s linear;
+    transition: background-color .12s linear, color .12s linear;
+    width: 100%;
+}
+.hrow-end { border-bottom: 1px solid #d8d1bb; }
+.hn {
+    color: #1c56b4;
+    display: table-cell;
+    font-size: 19px;
+    font-style: italic;
+    padding: 15px 2px 15px 8px;
+    vertical-align: top;
+    width: 46px;
+}
+.hb { display: table-cell; padding: 13px 8px; vertical-align: middle; }
+.hname { color: #1c1a15; display: block; font-size: 22px; font-weight: bold; line-height: 1.2; }
+.hmeta {
+    color: #7a7259;
+    display: block;
+    font: 11px/1.5 Arial, Helvetica, sans-serif;
+    letter-spacing: .06em;
+    margin-top: 5px;
+    text-transform: uppercase;
+}
+.hg { color: #b6ae94; display: table-cell; font-size: 22px; padding-right: 8px; text-align: right; vertical-align: middle; width: 34px; }
+
+.hrow:hover, .hrow:focus { background: #1c56b4; color: #fdfcf7; outline: none; }
+.hrow:hover .hn, .hrow:focus .hn { color: #f0d998; }
+.hrow:hover .hname, .hrow:focus .hname { color: #ffffff; }
+.hrow:hover .hmeta, .hrow:focus .hmeta { color: #d6e2f8; }
+.hrow:hover .hg, .hrow:focus .hg { color: #ffffff; }
+
+.note {
+    border: 1px dashed #c9c1a8;
+    color: #6b644f;
+    font-size: 14px;
+    font-style: italic;
+    line-height: 1.55;
+    margin-top: 18px;
+    padding: 12px 14px;
+}
+.note b { color: #1c56b4; font-style: normal; }
+
+/* ---------- Услуги ---------- */
+.svcols {
+    border-spacing: 0;
+    display: table;
+    margin-top: 22px;
+    table-layout: fixed;
+    width: 100%;
+}
+.svc { border-bottom: 1px solid #d8d1bb; display: table-cell; padding-bottom: 8px; vertical-align: top; width: 33.33%; }
+.svc-1 { padding-right: 20px; }
+.svc-2 { border-left: 1px solid #d8d1bb; padding: 0 20px 8px; }
+.svc-3 { border-left: 1px solid #d8d1bb; padding-left: 20px; }
+.svc h3 {
+    border-bottom: 2px solid #1c1a15;
+    color: #1c56b4;
+    font: bold 13px/1.5 Arial, Helvetica, sans-serif;
+    letter-spacing: .2em;
+    margin: 0 0 6px;
+    padding-bottom: 8px;
+    text-align: center;
+    text-transform: uppercase;
+}
+.svc ul { list-style: none; margin: 0; padding: 0; }
+.svc li {
+    border-bottom: 1px dotted #c9c1a8;
+    color: #37332a;
+    font-size: 16px;
+    line-height: 1.5;
+    padding: 10px 0 10px 20px;
+    position: relative;
+}
+.svc li:last-child { border-bottom: 0; }
+.svc li:before {
+    color: #1c56b4;
+    content: "\25A0";
+    font-size: 8px;
+    left: 2px;
+    position: absolute;
+    top: 15px;
+}
+
+/* ---------- Адрес магазина (главный акцент) ---------- */
+.address {
+    background: #17346a;
+    border: 6px double #d9c891;
+    color: #f3eeda;
+    margin-top: 30px;
+    padding: 30px 24px 34px;
+    text-align: center;
+}
+.addr-k { color: #e6d59a; font: bold 12px/1.5 Arial, Helvetica, sans-serif; letter-spacing: .34em; text-transform: uppercase; }
+.addr-sym { color: #8fa3d4; font-size: 15px; letter-spacing: .55em; margin: 12px 0 2px; }
+.addr-l { color: #d7def0; font-size: 17px; font-style: italic; margin-top: 12px; }
+.addr-street { color: #ffffff; font-size: 34px; font-weight: bold; line-height: 1.15; margin: 8px 0 0; }
+.addr-near { color: #d7def0; font-size: 17px; font-style: italic; margin-top: 4px; }
+.addr-sign { color: #ffffff; font-size: 18px; margin-top: 16px; }
+.addr-sign b { color: #e6d59a; font-size: 21px; letter-spacing: .06em; }
+
+/* ---------- Подвал ---------- */
+.foot { color: #5c5545; font-size: 15px; padding-top: 16px; text-align: center; }
+.foot p { margin: 0; }
+.foot a { color: #1c56b4; text-decoration: none; }
+.foot a:hover, .foot a:focus { text-decoration: underline; }
+.foot-small {
+    color: #8a8268;
+    font: 10px/1.6 Arial, Helvetica, sans-serif;
+    letter-spacing: .24em;
+    margin: 10px 0 0;
+    text-transform: uppercase;
+}
+
+/* ---------- Узкие экраны ---------- */
+@media (max-width: 780px) {
+    body { padding: 10px 4px 24px; }
+    .sheet { padding: 0 16px 20px; }
+    .strip { margin: 0 -16px; }
+    .topbar { font-size: 9px; letter-spacing: .1em; }
+    .mast-logo img { max-height: 84px; max-width: 220px; }
+    .mast-name { font-size: 32px; }
+    .mast-motto { font-size: 15px; }
+    .headline { font-size: 26px; }
+    .lede { font-size: 16px; }
+    .sec-head { padding: 9px 10px; }
+    .sec-hint { display: none; }
+    .hostcols, .svcols { display: block; }
+    .hcol, .svc { display: block; width: auto; }
+    .hcol-l { padding-right: 0; }
+    .hcol-r { border-left: 0; margin-top: 16px; padding-left: 0; }
+    .hname { font-size: 19px; }
+    .ad-tag, .ad-go { display: none; }
+    .svc-1 { padding-right: 0; }
+    .svc-2, .svc-3 { border-left: 0; border-top: 1px solid #d8d1bb; margin-top: 16px; padding: 16px 0 8px; }
+    .address { padding: 24px 14px 26px; }
+    .addr-street { font-size: 26px; }
+}
+</style>
+</head>
+<body>
+<div class="sheet">
+    <div class="strip"></div>
+
+    <header class="masthead">
+        <!-- ЛОГОТИП: положите файл bozistore.png рядом с index.html
+             (или поменяйте путь ниже). Если файла нет — плашка
+             с логотипом автоматически скрывается, шапка останется текстовой. -->
+        <div class="mast-logo">
+            <img src="bozistore.png" alt="BOZISTORE — Мир игр начинается здесь"
+                 onerror="this.parentNode.style.display='none'">
+        </div>
+        <h1 class="mast-name">BOZISTORE <span>HOST</span></h1>
+        <p class="mast-motto">&mdash; Мир игр начинается здесь &mdash;</p>
+        <div class="rule-thickthin"></div>
+    </header>
+
+    <div class="headzone">
+        <h2 class="headline">Выберите <em>прошивку</em></h2>
+    </div>
+
+    <section class="sec">
+        <div class="sec-head">
+            Прошивки 5.05&ndash;13.52
+        </div>
+
+        <div class="hostcols">
+            <div class="hcol hcol-l">
+                <a class="hrow" id="host01" href="1352/index.html">
+                    <span class="hn">01</span>
+                    <span class="hb"><span class="hname">FW 13.02&ndash;13.52</span><span class="hmeta">SlopKit GoldHEN // офлайн-хост</span></span>
+                    <span class="hg">&rarr;</span>
+                </a>
+                <a class="hrow" href="1300/version-selector.html">
+                    <span class="hn">02</span>
+                    <span class="hb"><span class="hname">FW 11.00&ndash;13.00</span><span class="hmeta">SlopKit WebKit // офлайн-хост</span></span>
+                    <span class="hg">&rarr;</span>
+                </a>
+                <a class="hrow" href="css/version-selector.html">
+                    <span class="hn">03</span>
+                    <span class="hb"><span class="hname">FW 6.00&ndash;11.02</span><span class="hmeta">CSSFontFace // хост GoldHEN</span></span>
+                    <span class="hg">&rarr;</span>
+                </a>
+                <a class="hrow hrow-end" href="900/version-selector.html">
+                    <span class="hn">04</span>
+                    <span class="hb"><span class="hname">FW 9.00&ndash;9.60</span><span class="hmeta">PSFree / Lapse // хост GoldHEN</span></span>
+                    <span class="hg">&rarr;</span>
+                </a>
+            </div>
+
+            <div class="hcol hcol-r">
+                <a class="hrow" href="700/version-selector.html">
+                    <span class="hn">05</span>
+                    <span class="hb"><span class="hname">FW 7.00&ndash;8.52</span><span class="hmeta">PSFree / Lapse // хост GoldHEN</span></span>
+                    <span class="hg">&rarr;</span>
+                </a>
+                <a class="hrow" href="672/index.html">
+                    <span class="hn">06</span>
+                    <span class="hb"><span class="hname">FW 6.72</span><span class="hmeta">Отдельный хост // сервисные программы</span></span>
+                    <span class="hg">&rarr;</span>
+                </a>
+                <a class="hrow hrow-end" href="505/index.html">
+                    <span class="hn">07</span>
+                    <span class="hb"><span class="hname">FW 5.05</span><span class="hmeta">Отдельный хост // сервисные программы</span></span>
+                    <span class="hg">&rarr;</span>
+                </a>
+
+                <div class="note"><b>Справка:</b> версию прошивки смотрите на PS4 в меню «Настройки &rarr; Система &rarr; Сведения о системе».</div>
+            </div>
+        </div>
+		
+        <div class="svcols">
+            <div class="svc svc-1">
+                <h3>Продажа</h3>
+                <ul>
+                    <li>Продажа оригинальных игровых приставок</li>
+                    <li>Продажа аксессуаров для игровых приставок</li>
+                </ul>
+            </div>
+            <div class="svc svc-2">
+                <h3>Обслуживание и ремонт</h3>
+                <ul>
+                    <li>Профессиональный ремонт игровых приставок</li>
+                    <li>Чистка системы охлаждения и замена термопасты</li>
+                </ul>
+            </div>
+            <div class="svc svc-3">
+                <h3>Обмен и Trade-In</h3>
+                <ul>
+                    <li>Обмен игровых дисков</li>
+                    <li>Выгодный Trade-In &mdash; обмен старых приставок на новые</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="address">
+            <div class="addr-k">Адрес магазина</div>
+            <div class="addr-sym">&#9651; &#9675; &#215; &#9633;</div>
+            <div class="addr-l">Наш магазин находится по адресу:</div>
+            <div class="addr-street">ул. Рудаки 13/1</div>
+            <div class="addr-near">рядом с кинотеатром «Ватан»</div>
+            <div class="addr-sign">Ищите вывеску <b>«BOZISTORE»</b></div>
+        </div>
+    </section>
+
+    <div class="rule-thinthick"></div>
+
+    <footer class="foot">
+        <p class="foot-small">BOZISTORE HOST &middot; Мир игр начинается здесь</p>
+    </footer>
+</div>
+
+<script>
+(function () {
+    /* Дата в шапке — как в настоящей газете */
+    try {
+        var M = ['января', 'февраля', 'марта', 'апреля', 'мая', 'июня',
+                 'июля', 'августа', 'сентября', 'октября', 'ноября', 'декабря'];
+        var d = new Date();
+        var el = document.getElementById('dateline');
+        if (el) {
+            el.innerHTML = d.getDate() + ' ' + M[d.getMonth()] + ' ' + d.getFullYear();
+        }
+    } catch (e) {}
+
+    /* Начальный фокус: указатель браузера PS4 виден сразу после загрузки.
+       Стрелки не перехватываем — консоль сама двигает курсор. */
+    var first = document.getElementById('host01');
+    if (first) { first.focus(); }
+})();
+</script>
+</body>
+</html>

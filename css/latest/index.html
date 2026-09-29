@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="ru" manifest="cache.manifest">
+
+<head>
+    <link rel="icon" type="image/png" href="../../bozistore.png">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BOZISTORE // PS4 6.00-11.02 HOST / 2.4B18.12</title>
+    <style>
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+html { background: #e7e1d0; }
+body {
+    background: #e7e1d0;
+    color: #1c1a15;
+    display: flex;
+    flex-direction: column;
+    font: 17px/1.5 Georgia, "Times New Roman", serif;
+    min-height: 100vh;
+    overflow-x: hidden;
+    padding: 26px 12px 48px;
+}
+a { color: #1c56b4; }
+.app {
+    background: #f9f6ec;
+    -webkit-box-shadow: 0 3px 30px rgba(28,26,21,.3);
+    box-shadow: 0 3px 30px rgba(28,26,21,.3);
+    display: flex;
+    flex: 1 0 auto;
+    flex-direction: column;
+    margin: 0 auto;
+    max-width: 1240px;
+    padding: 0 34px 28px;
+    width: 100%;
+}
+/* --- Шапка BOZISTORE (логотип без рамки, на прозрачном фоне) --- */
+.masthead { padding: 26px 0 0; text-align: center; }
+.mast-logo { background: transparent; border: 0; display: inline-block; padding: 0; }
+.mast-logo img { background: transparent; border: 0; display: block; height: auto; max-height: 120px; max-width: 300px; width: auto; }
+.mast-name { font-size: 46px; font-weight: bold; letter-spacing: .05em; line-height: 1; margin: 14px 0 8px; color: #1c1a15; }
+.mast-name span { color: #1c56b4; }
+.mast-motto { color: #7a7259; font-size: 17px; font-style: italic; margin: 0 0 14px; }
+.rule-thickthin { border-top: 3px solid #1c1a15; border-bottom: 1px solid #1c1a15; height: 4px; }
+.rule-thinthick { border-top: 1px solid #1c1a15; border-bottom: 3px solid #1c1a15; height: 4px; margin-top: 28px; }
+.fw-line { color: #8a8268; font: 11px/1.5 Arial, Helvetica, sans-serif; letter-spacing: .22em; margin: 12px 0 0; text-transform: uppercase; }
+.bar { display: none; }
+.layout { display: flex; flex: 1 0 auto; flex-direction: column; padding: 18px 8px 0; }
+.kicker { color: #1c56b4; font-size: 14px; font-style: italic; letter-spacing: .1em; margin: 0 0 10px; text-align: center; }
+h1 { color: #1c1a15; font-size: 36px; font-weight: bold; line-height: 1.12; margin: 0; text-align: center; }
+h1 em { color: #1c56b4; font-style: normal; }
+.sub { color: #4c463a; font-size: 18px; font-style: italic; line-height: 1.55; margin: 12px auto 0; max-width: 720px; text-align: center; }
+.boot { color: #7a7259; font-size: 14px; font-style: italic; list-style: none; margin: 12px auto 0; padding: 0; text-align: center; }
+.boot li { margin: 3px 0; }
+.boot b { color: #1c56b4; font-style: normal; }
+.fw-display { background: #f1ecdb; border: 1px solid #cfc7ae; color: #1c1a15; display: block; font-size: 15px; margin: 12px auto 0; padding: 6px 12px; text-align: center; max-width: 420px; }
+#UA { color: #8a8268; display: block; font-size: 12px; margin-top: 10px; overflow-wrap: anywhere; text-align: center; }
+/* --- Статус / журнал --- */
+.status { background: #f1ecdb; border: 1px solid #cfc7ae; margin-top: 20px; padding: 14px 16px; }
+.notification, .notification2 { background: #fffdf4; border: 1px solid #cfc7ae; color: #1c1a15; min-height: 42px; padding: 10px 14px; }
+#log { color: #1c1a15; font-size: 16px; line-height: 1.45; }
+#log h1 { color: #1c1a15 !important; font-size: 16px; font-weight: bold; line-height: 1.45; margin: 0; text-align: left; }
+#console {
+    background: #fffdf4;
+    border: 1px solid #cfc7ae;
+    color: #1c1a15;
+    font-family: "Courier New", monospace;
+    font-size: 14px;
+    line-height: 1.45;
+    max-height: 220px;
+    max-width: 100%;
+    min-height: 42px;
+    overflow: auto;
+    overflow-wrap: anywhere;
+    overflow-wrap: break-word;
+    word-break: break-all;
+    padding: 10px 14px;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
+#msgs2, #msgs { border-left: 3px solid #1c56b4; color: #1c1a15; font-size: 17px; line-height: 1.45; min-height: 24px; padding: 4px 10px; }
+#msgs2 h1, #msgs h1 { color: #1c1a15 !important; font-size: 16px; text-align: left; }
+#menu { display: none; }
+.jailbreak-status { border-left: 3px solid #1c56b4; color: #1c56b4; font-size: 17px; font-weight: bold; margin-top: 10px; padding: 4px 10px; }
+.status-meta { align-items: center; border-top: 1px solid #cfc7ae; color: #7a7259; display: flex; flex-wrap: wrap; font-size: 14px; gap: 10px 16px; margin-top: 10px; padding-top: 10px; }
+.status-pass { color: #1c56b4; }
+.status-fail { color: #a33b2e; }
+.status-label { border-bottom: 1px solid #cfc7ae; color: #1c56b4; font: bold 12px/1.5 Arial, Helvetica, sans-serif; letter-spacing: .2em; margin-bottom: 11px; padding: 0 4px 10px; text-transform: uppercase; }
+#state { color: #1c56b4; font-size: 24px; font-weight: bold; line-height: 1.25; margin: 14px 0 10px; text-align: center; }
+#det { color: #4c463a; font-size: 14px; margin: 0 0 6px; text-align: center; }
+#det b { color: #1c1a15; }
+#cache { color: #7a7259; font-size: 13px; font-style: italic; margin: 6px 0 10px; min-height: 16px; text-align: center; }
+#cache.cacheok { color: #1c56b4; font-weight: bold; }
+.ok { color: #1c56b4; } .bad { color: #a33b2e; } .warn { color: #8a6d1c; }
+.notice { border-left: 3px solid #8a6d1c; color: #4c463a; font-size: 14px; font-style: italic; margin-top: 12px; padding: 5px 10px; }
+/* лог эксплойта — моноширинный, на светлой бумаге */
+#out { background: #fffdf4; border: 1px solid #cfc7ae; color: #1c1a15; font-family: "Courier New", monospace; font-size: 13px; height: calc(100vh - 430px); line-height: 1.45; min-height: 220px; overflow-y: auto; overflow-x: auto; overflow-wrap: anywhere; overflow-wrap: break-word; word-break: break-all; word-wrap: break-word; max-width: 100%; padding: 12px 14px; white-space: pre-wrap; }
+/* --- Панели выбора / кнопок --- */
+.controls, .menu { border-top: 1px solid #1c1a15; margin-top: 22px; padding: 0; }
+.section-title, .menu-title { background: #f1ecdb; border-bottom: 1px solid #cfc7ae; color: #1c56b4; display: block; font: bold 12px/1.5 Arial, Helvetica, sans-serif; letter-spacing: .22em; margin: 0; padding: 10px; text-align: center; text-transform: uppercase; }
+.menu-top { background: #f1ecdb; border-bottom: 1px solid #cfc7ae; display: block; margin-bottom: 12px; padding: 10px; text-align: center; }
+.menu-hint { color: #a49a7e; font-size: 11px; letter-spacing: .1em; }
+.version-grid { display: table; border-spacing: 0; table-layout: fixed; width: 100%; }
+.grid, .grid-goldhen { display: block; margin-top: 14px; }
+.grid button, .grid-goldhen button, .version-card, .chain-option, #jeilbrek, #reloadBtn, .auto-jb-label {
+    font-family: Georgia, "Times New Roman", serif;
+}
+.grid button, .grid-goldhen button {
+    background: #fffdf4; border: 1px solid #cfc7ae; color: #1c1a15; cursor: pointer;
+    font-size: 17px; margin: 0 6px 8px 0; min-height: 48px; padding: 10px 16px;
+}
+.grid button:hover, .grid button:focus, .grid-goldhen button:hover, .grid-goldhen button:focus {
+    background: #1c56b4; border-color: #1c56b4; color: #fff; outline: none;
+}
+.version-card { background: #fffdf4; border: 1px solid #cfc7ae; cursor: pointer; display: table-cell; padding: 16px 18px; vertical-align: top; width: 50%; }
+.version-card:hover, .version-card:focus { background: #1c56b4; border-color: #1c56b4; outline: none; }
+.version-card:hover .version-title, .version-card:focus .version-title,
+.version-card:hover .card-index, .version-card:focus .card-index,
+.version-card:hover .card-action, .version-card:focus .card-action { color: #fff; }
+.version-card:hover .version-description, .version-card:focus .version-description { color: #d6e2f8; }
+.card-index { color: #1c56b4; font-size: 19px; font-style: italic; }
+.version-badge { color: #7a7259; display: block; font: bold 11px/1.5 Arial, Helvetica, sans-serif; letter-spacing: .18em; margin: 6px 0; text-transform: uppercase; }
+.version-card.latest .version-badge { color: #1c56b4; }
+.version-card:hover.latest .version-badge, .version-card:focus.latest .version-badge { color: #f0d998; }
+.version-title { color: #1c1a15; font-size: 22px; font-weight: bold; line-height: 1.2; }
+.version-number { color: #1c56b4; font-size: 17px; }
+.version-card:hover .version-number, .version-card:focus .version-number { color: #f0d998; }
+.version-description { color: #4c463a; display: block; font-size: 14px; font-style: italic; line-height: 1.5; margin-top: 7px; }
+.card-action { color: #1c56b4; display: block; font-size: 13px; font-weight: bold; margin-top: 10px; }
+/* цепочка CSSFontFace */
+#kernel-options { align-items: center; display: flex; flex-wrap: wrap; gap: 10px 14px; margin-top: 14px; }
+.chain-label { color: #4c463a; font-size: 13px; font-style: italic; }
+.chain-options { display: flex; gap: 8px; }
+#kernel-options input[type="radio"] { height: 1px; opacity: 0; position: absolute; width: 1px; }
+.chain-option, #jeilbrek, #reloadBtn, .auto-jb-label { background: #fffdf4; border: 1px solid #cfc7ae; color: #1c1a15; cursor: pointer; font-size: 16px; min-height: 48px; padding: 10px 16px; }
+#kernel-options input[type="radio"]:checked + .chain-option, .chain-option:hover, #jeilbrek:hover, #reloadBtn:hover, .auto-jb-label:hover { background: #1c56b4; border-color: #1c56b4; color: #fff; }
+#jeilbrek:focus, #reloadBtn:focus { outline: 2px solid #1c56b4; }
+#jeilbrek:disabled { cursor: wait; opacity: .55; }
+.auto-jb { align-items: center; display: flex; gap: 8px; }
+#autoJbInput { height: 18px; width: 18px; }
+/* прогресс кэша */
+.progress-container { margin-top: 20px; width: 100%; }
+.progress-label { color: #1c56b4; font-size: 16px; font-style: italic; margin-bottom: 10px; text-align: center; }
+.progress-wrapper { background: #fffdf4; border: 1px solid #cfc7ae; padding: 6px; }
+.progress-bar { background: #f1ecdb; border: 1px solid #cfc7ae; height: 62px; overflow: hidden; position: relative; }
+.progress-fill { background: #1c56b4; height: 100%; width: 0; }
+.progress-text { color: #1c1a15; font-size: 20px; font-weight: bold; left: 50%; position: absolute; top: 50%; transform: translate(-50%, -50%); z-index: 3; }
+.status-message { color: #4c463a; font-size: 15px; font-style: italic; margin-top: 12px; text-align: center; }
+/* --- Услуги --- */
+.svcols { border-spacing: 0; display: table; margin-top: 22px; table-layout: fixed; width: 100%; }
+.svc { border-bottom: 1px solid #d8d1bb; display: table-cell; padding-bottom: 8px; vertical-align: top; width: 33.33%; }
+.svc-1 { padding-right: 20px; } .svc-2 { border-left: 1px solid #d8d1bb; padding: 0 20px 8px; } .svc-3 { border-left: 1px solid #d8d1bb; padding-left: 20px; }
+.svc h3 { border-bottom: 2px solid #1c1a15; color: #1c56b4; font: bold 13px/1.5 Arial, Helvetica, sans-serif; letter-spacing: .18em; margin: 0 0 6px; padding-bottom: 8px; text-align: center; text-transform: uppercase; }
+.svc ul { list-style: none; margin: 0; padding: 0; }
+.svc li { border-bottom: 1px dotted #c9c1a8; color: #37332a; font-size: 15px; line-height: 1.5; padding: 8px 0 8px 18px; position: relative; }
+.svc li:last-child { border-bottom: 0; }
+.svc li:before { color: #1c56b4; content: "\25A0"; font-size: 8px; left: 2px; position: absolute; top: 13px; }
+/* --- Адрес --- */
+.address { background: #17346a; border: 6px double #d9c891; color: #f3eeda; margin-top: 26px; padding: 24px 20px 28px; text-align: center; }
+.addr-k { color: #e6d59a; font: bold 12px/1.5 Arial, Helvetica, sans-serif; letter-spacing: .3em; text-transform: uppercase; }
+.addr-sym { color: #8fa3d4; font-size: 14px; letter-spacing: .5em; margin: 10px 0 2px; }
+.addr-l { color: #d7def0; font-size: 16px; font-style: italic; margin-top: 10px; }
+.addr-street { color: #fff; font-size: 30px; font-weight: bold; line-height: 1.15; margin: 8px 0 0; }
+.addr-near { color: #d7def0; font-size: 16px; font-style: italic; margin-top: 4px; }
+.addr-sign { color: #fff; font-size: 17px; margin-top: 14px; }
+.addr-sign b { color: #e6d59a; font-size: 20px; letter-spacing: .06em; }
+/* --- Подвал --- */
+.foot { color: #5c5545; font-size: 14px; padding-top: 16px; text-align: center; }
+.foot p { margin: 0; }
+.foot a { color: #1c56b4; text-decoration: none; }
+.foot-small { color: #8a8268; font: 10px/1.6 Arial, Helvetica, sans-serif; letter-spacing: .2em; margin: 10px 0 0; text-transform: uppercase; }
+.nodeplay { display: none; }
+@media (max-width: 780px) {
+    body { padding: 10px 4px 24px; }
+    .app { padding: 0 16px 20px; }
+    .mast-logo img { max-height: 84px; max-width: 220px; }
+    .mast-name { font-size: 30px; }
+    h1 { font-size: 26px; }
+    .version-grid { display: block; }
+    .version-card { display: block; width: auto; margin-bottom: 10px; }
+    .svcols { display: block; }
+    .svc { display: block; width: auto; }
+    .svc-1 { padding-right: 0; }
+    .svc-2, .svc-3 { border-left: 0; border-top: 1px solid #d8d1bb; margin-top: 14px; padding: 14px 0 8px; }
+    .addr-street { font-size: 24px; }
+    #out { height: calc(100vh - 380px); }
+}
+</style>
+</head>
+
+<body>
+    <div class="app"><header class="masthead"><div class="mast-logo"><img src="../../bozistore.png" alt="BOZISTORE — Мир игр начинается здесь" onerror="this.style.display=\'none\'"></div><div class="mast-name">BOZISTORE <span>HOST</span></div><p class="mast-motto">&mdash; Мир игр начинается здесь &mdash;</p><div class="rule-thickthin"></div></header>
+        
+
+        <main class="layout">
+            <p class="kicker">запуск хоста CSSFontFace</p>
+            <h1>Хост CSSFontFace <em>6.00–11.02</em></h1>
+            <p class="sub">Офлайн-загрузчик GoldHEN от BOZISTORE.</p>
+            <ul class="boot">
+                <li>[ <b>ok</b> ] цепочка CSSFontFace готова</li>
+                <li>[ <b>ok</b> ] GoldHEN v2.4b18.12 подготовлен</li>
+                <li>[ <b>ok</b> ] офлайн-кэш готов</li>
+            </ul>
+            <p id="UA">Запущено на:</p>
+            <p id="cache">Проверка офлайн-кэша...</p>
+
+            <div class="status">
+                <div class="status-label">Вывод эксплойта</div>
+                <pre id="console">Готово. Ожидание запуска...</pre>
+            </div>
+
+            <section class="controls">
+                <div class="section-title">Управление взломом</div>
+                <form id="kernel-options">
+                    <span class="chain-label">Ядро цепочки</span>
+                    <div class="chain-options">
+                        <input type="radio" name="kernel" id="netctrl-exploit" value="netctrl">
+                        <label class="chain-option" for="netctrl-exploit">Poops (цепочка)</label>
+                        <input type="radio" name="kernel" id="lapse-exploit" value="lapse">
+                        <label class="chain-option" for="lapse-exploit">Lapse (цепочка)</label>
+                    </div>
+                    <button id="jeilbrek" type="button">Взломать</button>
+                    <button id="reloadBtn" type="button">Перезагрузить</button>
+                    <div class="auto-jb">
+                        <label class="auto-jb-label" for="autoJbInput" id="autoJbLabel">Автовзлом</label>
+                        <input id="autoJbInput" type="checkbox">
+                    </div>
+                </form>
+            </section>
+
+            
+
+            
+        <div class="svcols">
+            <div class="svc svc-1">
+                <h3>Продажа</h3>
+                <ul>
+                    <li>Продажа оригинальных игровых приставок</li>
+                    <li>Продажа аксессуаров для игровых приставок</li>
+                </ul>
+            </div>
+            <div class="svc svc-2">
+                <h3>Обслуживание и ремонт</h3>
+                <ul>
+                    <li>Профессиональный ремонт игровых приставок</li>
+                    <li>Чистка системы охлаждения и замена термопасты</li>
+                </ul>
+            </div>
+            <div class="svc svc-3">
+                <h3>Обмен и Trade-In</h3>
+                <ul>
+                    <li>Обмен игровых дисков</li>
+                    <li>Выгодный Trade-In — обмен старых приставок на новые</li>
+                </ul>
+            </div>
+        </div>
+        <div class="address">
+            <div class="addr-k">Адрес магазина</div>
+            <div class="addr-sym">&#9651; &#9675; &#215; &#9633;</div>
+            <div class="addr-l">Наш магазин находится по адресу:</div>
+            <div class="addr-street">ул. Рудаки 13/1</div>
+            <div class="addr-near">рядом с кинотеатром «Ватан»</div>
+            <div class="addr-sign">Ищите вывеску <b>«BOZISTORE»</b></div>
+        </div>
+        <div class="rule-thinthick"></div>
+        
+        
+        
+        
+        <footer class="foot">
+            <p class="foot-small">BOZISTORE HOST &middot; Мир игр начинается здесь</p>
+        </footer>
+
+
+        </main>
+    </div>
+
+    <script src="src/main.js"></script>
+    <script src="includes/script.js"></script>
+
+    <script>
+    (function () {var cacheEl = document.getElementById("cache");
+        function setCache(text, ok) {
+            if (!cacheEl) return;
+            cacheEl.textContent = text;
+            cacheEl.className = ok ? "cacheok" : "";
+        }
+
+        var ac = window.applicationCache;
+
+        if (!ac || !document.documentElement.hasAttribute("manifest")) {
+            setCache("application cache unavailable");
+        } else if (!navigator.onLine) {
+            setCache("offline -- using cached resources", true);
+        } else if (ac.status === ac.IDLE) {
+            setCache("cached -- offline ready", true);
+        } else if (ac.status === ac.UPDATEREADY) {
+            try {
+                ac.swapCache();
+            } catch (e) {}
+            setCache("update downloaded -- offline ready", true);
+        } else {
+            setCache("checking cache...");
+
+            ac.addEventListener("downloading", function () {
+                setCache("caching for offline (first run)...");
+            }, false);
+
+            ac.addEventListener("progress", function (e) {
+                if (e && e.total) {
+                    setCache(
+                        "caching " +
+                        Math.round((e.loaded / e.total) * 100) +
+                        "%"
+                    );
+                }
+            }, false);
+
+            ac.addEventListener("cached", function () {
+                setCache("cached for offline use", true);
+            }, false);
+
+            ac.addEventListener("updateready", function () {
+                try {
+                    ac.swapCache();
+                } catch (e) {}
+                setCache("update downloaded -- offline ready", true);
+            }, false);
+
+            ac.addEventListener("noupdate", function () {
+                setCache("cached -- offline ready", true);
+            }, false);
+
+            ac.addEventListener("error", function () {
+                setCache("cache unavailable");
+            }, false);
+
+            ac.addEventListener("obsolete", function () {
+                setCache("cache obsolete");
+            }, false);
+        }
+    })();
+    </script>
+
+</body>
+
+</html>
