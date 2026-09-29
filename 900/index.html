@@ -36,7 +36,7 @@ a { color: #1c56b4; }
 /* --- Шапка BOZISTORE (логотип без рамки, на прозрачном фоне) --- */
 .masthead { padding: 26px 0 0; text-align: center; }
 .mast-logo { background: transparent; border: 0; display: inline-block; padding: 0; }
-.mast-logo img { background: transparent; border: 0; display: block; height: auto; max-height: 120px; max-width: 300px; width: auto; }
+.mast-logo img { background: transparent; border: 0; display: block; height: auto; max-height: 240px; max-width: 409px; width: auto; }
 .mast-name { font-size: 46px; font-weight: bold; letter-spacing: .05em; line-height: 1; margin: 14px 0 8px; color: #1c1a15; }
 .mast-name span { color: #1c56b4; }
 .mast-motto { color: #7a7259; font-size: 17px; font-style: italic; margin: 0 0 14px; }
@@ -167,6 +167,21 @@ h1 em { color: #1c56b4; font-style: normal; }
     .addr-street { font-size: 24px; }
     #out { height: calc(100vh - 380px); }
 }
+
+/* --- Верхний ряд: логотип слева / адрес справа (50/50) --- */
+.toprow { border-spacing: 0; display: table; table-layout: fixed; width: 100%; }
+.toprow-logo { display: table-cell; padding-right: 12px; text-align: left; vertical-align: middle; width: 50%; }
+.toprow-addr { display: table-cell; padding-left: 12px; vertical-align: middle; width: 50%; }
+.toprow-addr .address { margin-top: 0; padding: 16px 14px 18px; }
+.toprow-addr .addr-street { font-size: 24px; }
+.toprow-addr .addr-sign { font-size: 15px; }
+.toprow-addr .addr-l, .toprow-addr .addr-near { font-size: 14px; }
+@media (max-width: 780px) {
+    .toprow, .toprow-logo, .toprow-addr { display: block; width: auto; }
+    .toprow-logo { padding-right: 0; text-align: center; }
+    .toprow-addr { margin-top: 14px; padding-left: 0; }
+}
+
 </style>
     <script>
         if (window.applicationCache.status == '0') {
@@ -179,18 +194,13 @@ h1 em { color: #1c56b4; font-style: normal; }
 </head>
 
 <body onload="if (window.ps4FirmwareSupported) load_exploit();">
-    <div class="app"><header class="masthead"><div class="mast-logo"><img src="../bozistore.png" alt="BOZISTORE — Мир игр начинается здесь" onerror="this.style.display=\'none\'"></div><div class="mast-name">BOZISTORE <span>HOST</span></div><p class="mast-motto">&mdash; Мир игр начинается здесь &mdash;</p><div class="rule-thickthin"></div></header>
+    <div class="app"><header class="masthead"><div class="toprow"><div class="toprow-logo"><div class="mast-logo"><img src="../bozistore.png" alt="BOZISTORE — Мир игр начинается здесь" onerror="this.style.display=\'none\'"></div></div><div class="toprow-addr"><div class="address"><div class="addr-k">Адрес магазина</div><div class="addr-sym">&#9651; &#9675; &#215; &#9633;</div><div class="addr-l">Наш магазин находится по адресу:</div><div class="addr-street">ул. Рудаки 13/1</div><div class="addr-near">рядом с кинотеатром «Ватан»</div><div class="addr-sign">Ищите вывеску <b>«BOZISTORE»</b></div></div></div></div><div class="mast-name">BOZISTORE <span>HOST</span></div><p class="mast-motto">&mdash; Мир игр начинается здесь &mdash;</p><div class="rule-thickthin"></div></header>
         
 
         <main class="layout">
             <p class="kicker">запуск хоста PSFree 9.xx</p>
             <h1>Хост PSFree <em>9.00–9.60</em></h1>
-            <p class="sub">Онлайн- и офлайн-загрузчик GoldHEN (Lapse) от BOZISTORE.</p>
-            <ul class="boot">
-                <li>[ <b>ok</b> ] цепочка PSFree 1.7 готова</li>
-                <li>[ <b>ok</b> ] GoldHEN v2.4b18.12 подготовлен</li>
-                <li>[ <b>ok</b> ] офлайн-кэш готов</li>
-            </ul>
+
             <p class="fw-display">Прошивка: <span id="PS4fw"></span></p>
 
             <div class="status">
@@ -247,14 +257,6 @@ h1 em { color: #1c56b4; font-style: normal; }
                     <li>Выгодный Trade-In — обмен старых приставок на новые</li>
                 </ul>
             </div>
-        </div>
-        <div class="address">
-            <div class="addr-k">Адрес магазина</div>
-            <div class="addr-sym">&#9651; &#9675; &#215; &#9633;</div>
-            <div class="addr-l">Наш магазин находится по адресу:</div>
-            <div class="addr-street">ул. Рудаки 13/1</div>
-            <div class="addr-near">рядом с кинотеатром «Ватан»</div>
-            <div class="addr-sign">Ищите вывеску <b>«BOZISTORE»</b></div>
         </div>
         <div class="rule-thinthick"></div>
         
