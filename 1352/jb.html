@@ -75,7 +75,7 @@ h1 em { color: #1c56b4; font-style: normal; }
 .ok { color: #1c56b4; } .bad { color: #a33b2e; } .warn { color: #8a6d1c; }
 .notice { border-left: 3px solid #8a6d1c; color: #4c463a; font-size: 14px; font-style: italic; margin-top: 12px; padding: 5px 10px; }
 /* лог эксплойта — моноширинный, на светлой бумаге */
-#out { background: #fffdf4; border: 1px solid #cfc7ae; color: #1c1a15; font-family: "Courier New", monospace; font-size: 13px; height: calc(100vh - 430px); line-height: 1.45; min-height: 220px; overflow-y: auto; overflow-x: auto; overflow-wrap: anywhere; overflow-wrap: break-word; word-break: break-all; word-wrap: break-word; max-width: 100%; padding: 12px 14px; white-space: pre-wrap; }
+#out { background: #fffdf4; border: 1px solid #cfc7ae; color: #1c1a15; font-family: "Courier New", monospace; font-size: 13px; height: 180px; line-height: 1.45; min-height: 180px; overflow-y: auto; overflow-x: auto; overflow-wrap: anywhere; overflow-wrap: break-word; word-break: break-all; word-wrap: break-word; max-width: 100%; padding: 12px 14px; white-space: pre-wrap; }
 /* --- Панели выбора / кнопок --- */
 .controls, .menu { border-top: 1px solid #1c1a15; margin-top: 22px; padding: 0; }
 .section-title, .menu-title { background: #f1ecdb; border-bottom: 1px solid #cfc7ae; color: #1c56b4; display: block; font: bold 12px/1.5 Arial, Helvetica, sans-serif; letter-spacing: .22em; margin: 0; padding: 10px; text-align: center; text-transform: uppercase; }
@@ -164,7 +164,7 @@ h1 em { color: #1c56b4; font-style: normal; }
     .svc-1 { padding-right: 0; }
     .svc-2, .svc-3 { border-left: 0; border-top: 1px solid #d8d1bb; margin-top: 14px; padding: 14px 0 8px; }
     .addr-street { font-size: 24px; }
-    #out { height: calc(100vh - 380px); }
+    #out { height: 180px; }
 }
 </style>
 </head>
@@ -175,9 +175,38 @@ h1 em { color: #1c56b4; font-style: normal; }
         <div id="state">загрузка взлома...</div>
         <div id="out"></div>
     
-        <div class="address">
-            <div class="addr-k">BOZISTORE &middot; ул. Рудаки 13/1, рядом с кинотеатром «Ватан»</div>
+        <div class="svcols">
+            <div class="svc svc-1">
+                <h3>Продажа</h3>
+                <ul>
+                    <li>Продажа оригинальных игровых приставок</li>
+                    <li>Продажа аксессуаров для игровых приставок</li>
+                </ul>
+            </div>
+            <div class="svc svc-2">
+                <h3>Обслуживание и ремонт</h3>
+                <ul>
+                    <li>Профессиональный ремонт игровых приставок</li>
+                    <li>Чистка системы охлаждения и замена термопасты</li>
+                </ul>
+            </div>
+            <div class="svc svc-3">
+                <h3>Обмен и Trade-In</h3>
+                <ul>
+                    <li>Обмен игровых дисков</li>
+                    <li>Выгодный Trade-In — обмен старых приставок на новые</li>
+                </ul>
+            </div>
         </div>
+        <div class="address">
+            <div class="addr-k">Адрес магазина</div>
+            <div class="addr-sym">&#9651; &#9675; &#215; &#9633;</div>
+            <div class="addr-l">Наш магазин находится по адресу:</div>
+            <div class="addr-street">ул. Рудаки 13/1</div>
+            <div class="addr-near">рядом с кинотеатром «Ватан»</div>
+            <div class="addr-sign">Ищите вывеску <b>«BOZISTORE»</b></div>
+        </div>
+        <div class="rule-thinthick"></div>
         <footer class="foot">
             <p class="foot-small">BOZISTORE HOST &middot; Мир игр начинается здесь</p>
         </footer>
