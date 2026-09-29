@@ -2,6 +2,7 @@ CACHE MANIFEST
 # v12 - goldhen b18.12
 
 CACHE:
+../../bozistore.png
 index.html
 run_lapse.html
 run_poops.html

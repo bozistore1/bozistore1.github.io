@@ -2,6 +2,7 @@ CACHE MANIFEST
 # v8 - goldhen b18.12 (stable branch)
 
 CACHE:
+../bozistore.png
 index5.html
 alert5.mjs
 config.mjs
